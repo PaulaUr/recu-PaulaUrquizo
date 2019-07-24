@@ -1,0 +1,24 @@
+{
+    "name": "lasalle/testing_project",
+    "description": "Testing project",
+    "require": {
+        "php": "^7.0",
+        "kevinlebrun/colors.php": "^1.0",
+      "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Paula\\TestingProject\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Paula\\TestingProjectTest\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0",
+        "mockery/mockery": "^1.2",
+        "fzaninotto/faker": "^1.8"
+    }
+}
