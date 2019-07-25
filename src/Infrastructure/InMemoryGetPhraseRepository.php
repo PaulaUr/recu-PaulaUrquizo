@@ -49,10 +49,17 @@ final class InMemoryGetPhraseRepository implements GetPhraseRepo
         return file_put_contents($this->filePath , json_encode($sentences .PHP_EOL), FILE_APPEND | LOCK_EX);
     }
 
-    public function findPhrase(string $phrase): PhrasesModel
+    public function search($phrase): array
     {
-        return $this->list[$phrase] ?? null;
+        $sentences = $this->findAll();
+
+        return isset($sentences[$phrase]) ? $sentences[$phrase] : [];
     }
 
+    private function findAll()
+    {
+        $result = json_decode(file_get_contents($this->filePath), true);
 
+        return is_array($result) ? $result : [];
+    }
 }

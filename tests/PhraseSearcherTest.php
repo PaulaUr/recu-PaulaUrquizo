@@ -10,15 +10,14 @@ use Paula\TestingProjectTest\Dummy\PhraseRepoDummy;
 use PHPUnit\Framework\TestCase;
 
 
-final class GetPhraseMockTest extends TestCase
+final class PhraseSearcherTest extends TestCase
 {
 
     /**
      * @test
      */
-    public function shouldShowPhraseMock()
+    public function shouldReturnAWordAndItShouldBePhraseTwo()
     {
-        $phraseDummy = new PhraseRepoDummy();
         $phraseRepo = $this->getMockBuilder(GetPhraseRepo::class)
                             ->getMock();
         $phraseRepo->expects($this->any())
@@ -26,9 +25,9 @@ final class GetPhraseMockTest extends TestCase
                              ->willReturn(['PhraseTwo']);
         $randomPhrase = new RandomPhrase($phraseRepo);
 
-        $result = $randomPhrase;
+        $result = $randomPhrase();
 
         $this->assertNotNull($result);
-        $this->assertNotEquals('PhraseOne',$result->__invoke());
+        $this->assertEquals('PhraseTwo',$result);
     }
 }

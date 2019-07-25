@@ -10,10 +10,11 @@ use Paula\TestingProject\Infrastructure\InMemoryGetPhraseRepository;
 use Paula\TestingProject\Repository\GetPhraseRepo;
 
 
-
 $phrase = new RandomPhrase(new InMemoryGetPhraseRepository());
 $randomPhrase =  $phrase->__invoke();
 $phrase->savePhrases($randomPhrase);
+
 echo $randomPhrase;
+
 
 

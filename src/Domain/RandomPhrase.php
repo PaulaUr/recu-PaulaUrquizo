@@ -4,7 +4,10 @@ namespace Paula\TestingProject\Domain;
 
 
 use Paula\TestingProject\Application\AddPhrase;
+use Paula\TestingProject\Application\FinderPhrase;
+use Paula\TestingProject\Exception\EmptyArrayException;
 use Paula\TestingProject\Repository\GetPhraseRepo;
+
 
 final class RandomPhrase
 {
@@ -21,7 +24,7 @@ final class RandomPhrase
         $phrases = $this->repository->getPhrase();
         if(empty($phrases))
         {
-            echo 'array vacio';
+            throw new EmptyArrayException();
         }
 
         return $phrases[mt_rand(0, count($phrases) - 1)];
@@ -32,7 +35,14 @@ final class RandomPhrase
         $storage = new AddPhrase($this->repository);
 
         $storage->__invoke($sentence);
+    }
 
+    public function searcherPhrases($sentence)
+    {
+        $phraseFound = new FinderPhrase($this->repository);
+
+        return $phraseFound->__invoke($sentence);
+        
     }
 
 }

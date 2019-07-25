@@ -3,12 +3,13 @@
 namespace Paula\TestingProjectTest\Dummy;
 
 
+use Paula\TestingProject\Domain\PhrasesModel;
 use Paula\TestingProject\Repository\GetPhraseRepo;
 
 class PhraseRepoDummy implements GetPhraseRepo
 {
 
-    public function getPhrase()
+    public function getPhrase(): PhrasesModel
     {
         return null;
     }
@@ -16,5 +17,10 @@ class PhraseRepoDummy implements GetPhraseRepo
     public function addPhrase($phrase)
     {
         return;
+    }
+
+    public function search($phrase): array
+    {
+        return [];
     }
 }

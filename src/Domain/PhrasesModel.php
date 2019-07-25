@@ -16,7 +16,7 @@ final class PhrasesModel
         $this->phrase = $phrase;
     }
 
-    public static function create(string $phrase)
+    public static function savePhrases(string $phrase)
     {
         return new self($phrase);
     }

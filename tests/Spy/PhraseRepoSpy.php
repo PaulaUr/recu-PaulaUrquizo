@@ -20,4 +20,10 @@ final class PhraseRepoSpy implements GetPhraseRepo
         $this->hasBeenCalledPublish = true;
         return true;
     }
+
+    public function search($phrase): array
+    {
+        $this->hasBeenCalledPublish = true;
+        return ['true'];
+    }
 }

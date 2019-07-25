@@ -27,4 +27,11 @@ class InMemoryPhraseFake implements GetPhraseRepo
     {
         return $this->list[$phrase] ?? null;
     }
+
+    public function search($phrase): array
+    {
+        $all = $this->getPhrase();
+
+        return is_array($all) ? $all : [];
+    }
 }
